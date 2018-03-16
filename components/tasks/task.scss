@@ -1,0 +1,48 @@
+.task {
+	position: relative;
+
+	.fixed-action-btn {
+		position: absolute;
+		right: 10px;
+		display: inline-block;
+		top: 15px;
+
+		&.horizontal ul {
+			right: 55px;
+		}
+	}
+}
+
+/* Transitions */
+.task-appear {
+	opacity: 0.01;
+
+	&-active {
+		opacity: 1;
+		transition: opacity .2s ease-in;
+	}
+}
+
+.task-enter {
+	opacity: 0.01;
+	transform: translateX(10%);
+
+	&-active {
+		opacity: 1;
+		transform: translateX(0);
+		transition: opacity .2s ease-out,
+					transform .2s ease-in;
+	}
+}
+
+.task-leave {
+	opacity: 1;
+	transform: scale(1);
+
+	&-active {
+		opacity: 0.01;
+		transform: scale(.75);
+		transition: opacity .2s ease-out,
+					transform .2s ease-in;
+	}
+}
