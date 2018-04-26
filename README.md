@@ -19,13 +19,17 @@ The list is ordered by completion with completed items being pushed to the botto
 Accessibility: 
 * Aria roles can be added for none native UI controls.
 * Task items should be focusable with clear focus states.
+
 Offline mode: 
 * Localstorage could be leveraged for continued use during loss of connection and synced with database when available.
+
 UI/UX: 
 * Make controls more intuitive, make use of existing design patterns to maximise speed at which user is able to understand the controls.
 * Use colour and animation to give better indication when a user has completed an action or state has changed.
-* Completing a task could be done by swiping on touch devices with a fallback button for desktop and screen readers, Modernizr could be used for feature detection.
+* Completing a task could be done by swiping on touch devices with a fallback button for desktop and screen readers, 
+Modernizr could be used for feature detection.
 * Allow users to reorder tasks within the list by dragging and dropping. This could also be used for removing items from list.
+
 Further work:
 * Extend the task schema to represent priority of task, completion date, and add longer detailed descriptions. Use the edit button to access this functionality.
 * Complete undo functionality for removed messages
