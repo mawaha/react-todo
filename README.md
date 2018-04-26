@@ -6,13 +6,18 @@ Simple todo app built to demonstrate integration of React and Materialize
 
 ## Getting started
 Install dependencies `$ npm i`
+
 Start mongo db `$ mongod`
+
 Start local server `$ npm start`
 
 ## Details
 This is a very basic single page application demonstrating how the Materialize UI library could be integrated with React.
+
 Currently users can add new items at the top of the page and complete or remove items on the list by hovering over the edit icon on the right of the todo item.
+
 Removing an item shows a dialog notifying user of this action.
+
 The list is ordered by completion with completed items being pushed to the bottom of the list.
 
 ## Roadmap
