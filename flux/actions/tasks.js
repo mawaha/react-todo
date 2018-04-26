@@ -1,25 +1,28 @@
 import dispatcher from '../dispatcher'
 import * as ACTION from '../types'
 import { post, get, remove, put } from '../../utilities/ajax'
+import { prop } from 'ramda'
 
 export function addTask(payload) {
-	post('/api/tasks', payload)
+	return post('/api/tasks', payload)
+		.map(prop('data'))
 		.fork(error => {
 			throw error
 		}, response => {
 			dispatcher.dispatch({
 				type: ACTION.ADD_TASK,
-				payload: response.data
+				payload: response
 			})
 		})
 }
 
 export function allTasks() {
-	get('/api/tasks', {})
+	return get('/api/tasks', {})
+		.map(prop('data'))
 		.fork(error => {
 			throw error
 		}, response => {
-			const payload = response.data
+			const payload = response
 
 			dispatcher.dispatch({
 				type: ACTION.ALL_TASKS,
@@ -29,13 +32,14 @@ export function allTasks() {
 }
 
 export function removeTask(task) {
-console.log(task);
-	remove('/api/tasks', task)
+
+	return remove('/api/tasks', task)
+		.map(prop('data'))
 		.fork(error => {
 			throw error
 		}, response => {
 
-			if (!response.data.removed) return;
+			if (!response.removed) return;
 
 			dispatcher.dispatch({
 				type: ACTION.REMOVE_TASK,
@@ -46,17 +50,17 @@ console.log(task);
 }
 
 export function completeTask(task) {
-console.log('actions completeTask', task);
-	put('/api/tasks', Object.assign({}, task, {complete: true}))
+
+	return put('/api/tasks', Object.assign({}, task, {complete: true}))
+		.map(prop('data'))
 		.fork(error => {
 			throw error
 		}, response => {
-console.log('response', response.data);
-			if (!response.data.complete) return;
+			if (!response.complete) return;
 
 			dispatcher.dispatch({
 				type: ACTION.COMPLETE_TASK,
-				payload: response.data
+				payload: response
 			})
 		})
 }

@@ -8,7 +8,8 @@ import './toast.scss'
 	Messages supplied in the form :
 	{
 		_id: message_1234,
-		label: 'foo'
+		label: 'foo',
+		action: 'undo'
 	}
 */
 
@@ -16,9 +17,10 @@ const Toast = props => {
 	const properties = omit(['onTimeout'], props)
 
 	return (
-		    <div {...properties} className="toast pending">
+		    <div {...properties} className="toast">
 				<span>{props.label}</span>
 				{ properties.children }
+				{ props.action }
 			</div>
 	)
 }

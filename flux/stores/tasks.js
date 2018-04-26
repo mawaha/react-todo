@@ -1,5 +1,5 @@
 import EventEmitter from 'events'
-import { sort } from 'ramda'
+import { sort, lift } from 'ramda'
 import get from '../../utilities/ajax'
 import dispatcher from '../dispatcher'
 import * as ACTION from '../types'
